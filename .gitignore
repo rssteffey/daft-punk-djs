@@ -26,3 +26,7 @@ Library/
 Temp/
 UserSettings/
 Assets/RawTracks/
+
+!Assets/RawTracks/We_Are_One.mp3
+
+.vs/

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DJ_Booth.unity
+    guid: 23259cdacbb2bac48b2c8910ce63bc8f
   m_configObjects: {}
