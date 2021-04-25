@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 833df886476f63b4eb7c3f67b69eeb71
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dotMatrix: {fileID: 2100000, guid: 639ac179334ca9142a1ee61dc97b65b8, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
