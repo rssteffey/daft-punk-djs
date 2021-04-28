@@ -57,6 +57,8 @@
     <Compile Include="Assets\UI\Hex_Vis1\HexTunnel.cs" />
     <Compile Include="Assets\Scripts\ActivateAllDisplays.cs" />
     <Compile Include="Assets\Scripts\MaterialTester.cs" />
+    <Compile Include="Assets\UI\Hex_Vis1\HexFreq.cs" />
+    <Compile Include="Assets\UI\SpectrumAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -41,9 +41,6 @@ public class HexTunnel : MonoBehaviour
 
     private void instantiateTunnel()
     {
-        Vector3 curr_side_loc = new Vector3(0, 0, 0);
-        Quaternion curr_side_rot = this.transform.localRotation;
-
         //Calculate values
         float radius = squareSize * columns; //Hexagons are very handy in that this also happens to be the edge length
         float edge = radius;
@@ -174,7 +171,7 @@ public class HexTunnel : MonoBehaviour
 
                     // Set location of grid square
                     float locOffsetY = squareSize * ((i + 0.5f) - ((cols / 2.0f)));
-                    float locOffsetX = -1 * ((j * depthSize) - (depthSize / 2.0f));
+                    float locOffsetX = -1 * ((j * depthSize) + (depthSize / 2.0f));
                     plane.transform.Translate(new Vector3(locOffsetX, locOffsetY, 0));
 
                     //Set material and render options
