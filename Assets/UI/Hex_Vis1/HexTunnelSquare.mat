@@ -33,5 +33,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - UIColor: {r: 0, g: 0.511944, b: 0.6603774, a: 0}
+    - UIColor: {r: 0, g: 0.511944, b: 0.6603774, a: 1}
   m_BuildTextureStacks: []
