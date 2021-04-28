@@ -22,6 +22,7 @@ public class HexFreq : MonoBehaviour
     {
         this.transform.position = tunnelScript.transform.position;
         origin = this.transform.position;
+        border.gameObject.SetActive(true);
         instantiateHex();
     }
 
@@ -64,6 +65,7 @@ public class HexFreq : MonoBehaviour
         for (int h = 0; h < 6; h++)
         {
             LineRenderer lr = quads[h];
+            lr.gameObject.SetActive(true);
 
             // Point A
             traverser.transform.Translate(new Vector3(radius - max_frequency, 0, 0));

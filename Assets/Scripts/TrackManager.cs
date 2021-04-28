@@ -10,6 +10,8 @@ public class TrackManager : MonoBehaviour
     private List<TrackInformation> playlist;
     private int currentTrack;
 
+    public SpectrumAnalyzer spectrum;
+
     private AudioSource musicPlayer;
     private bool currentlyPlaying, stopped;
 
@@ -22,6 +24,9 @@ public class TrackManager : MonoBehaviour
         // Add all available tracks to the setlist
         playlist = new List<TrackInformation>();
         playlist.AddRange(tracks);
+
+        shuffle();
+        musicPlayer.Play();
     }
 
     void Update()
@@ -34,6 +39,11 @@ public class TrackManager : MonoBehaviour
         if (Input.GetKeyDown("s"))
         {
             shuffle();
+        }
+
+        if (Input.GetKeyDown("n"))
+        {
+            nextTrack();
         }
     }
 
@@ -49,6 +59,7 @@ public class TrackManager : MonoBehaviour
         if(currentTrack == playlist.Count)
         {
             //shuffle songs?
+            shuffle();
 
             //Back to zero
             currentTrack = 0;
@@ -57,6 +68,12 @@ public class TrackManager : MonoBehaviour
         // Start the track
         Debug.Log("Now playing: " + playlist[currentTrack].Name);
         musicPlayer.clip = playlist[currentTrack].Track;
+
+        //Use track overrides for spectrum analysis
+        spectrum.freq_normalizer = playlist[currentTrack].frequencyModifier;
+        spectrum.curve_modifier = playlist[currentTrack].curveMultiplier;
+        spectrum.spectrum_divider = playlist[currentTrack].freqDivisions;
+
         musicPlayer.Play();
     }
 
@@ -76,10 +93,18 @@ public class TrackManager : MonoBehaviour
     [System.Serializable]
     public class TrackInformation
     {
+        [Header("Track Info")]
         public AudioClip Track; //
         public string Name;
+        public string Artist;
         public int Bpm; // Track BPM to help with beat animation
         public float Pep; //Arbitrary value to blend motion intensity on
+
+        [Header("Visualizer Tweaking")]
+        public AnimationCurve frequencyModifier;
+        public float curveMultiplier = 4.0f;
+        public int freqDivisions = 12; // Number of divisions to divide the track into
+        public int freqOffset = 0;
 
         private float shuffleVal = 0.0f;
 

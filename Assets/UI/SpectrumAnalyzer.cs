@@ -9,6 +9,10 @@ public class SpectrumAnalyzer : MonoBehaviour
     public float SpectrumRefreshTime;
 
     public float[] freq_normalizers; // Swap these to be overrideable per song
+
+    public AnimationCurve freq_normalizer;
+    public float curve_modifier = 5.0f;
+
     public int spectrum_divider;
 
     private float lastUpdate = 0;
@@ -37,7 +41,8 @@ public class SpectrumAnalyzer : MonoBehaviour
 
             for(int side = 0; side < 6; side++)
             {
-                hexVisualizer.setSize(side, Mathf.Clamp(hexVals[side] * freq_normalizers[side], 0.0f, 1.0f));
+                float strength = Mathf.Clamp(hexVals[side] * freq_normalizer.Evaluate(side / 6.0f) * curve_modifier, 0.0f, 1.0f);
+                hexVisualizer.setSize(side, strength);
                 hexVals[side] = 0.0f;
             }
             
