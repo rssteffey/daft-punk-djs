@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class TrackManager : MonoBehaviour
 {
-    public int test;
+    public bool includeExtendedTracks;
     public TrackInformation[] tracks;
+
+    public TrackInformation[] extendedTracks;
 
     private List<TrackInformation> playlist;
     private int currentTrack;
 
     public SpectrumAnalyzer spectrum;
 
+    public TrackInfo trackInfoDisplay;
+
+    public Material BpmMaterial;
+
     private AudioSource musicPlayer;
     private bool currentlyPlaying, stopped;
+    private int currentBpm = 0;
 
 
     void Start()
@@ -24,6 +31,11 @@ public class TrackManager : MonoBehaviour
         // Add all available tracks to the setlist
         playlist = new List<TrackInformation>();
         playlist.AddRange(tracks);
+
+        if (includeExtendedTracks)
+        {
+            playlist.AddRange(extendedTracks);
+        }
 
         shuffle();
         musicPlayer.Play();
@@ -65,6 +77,9 @@ public class TrackManager : MonoBehaviour
             currentTrack = 0;
         }
 
+        //Update track info in UI visualizer
+        trackInfoDisplay.updateTrackInfo(playlist[currentTrack].Name, playlist[currentTrack].Artist);
+
         // Start the track
         Debug.Log("Now playing: " + playlist[currentTrack].Name);
         musicPlayer.clip = playlist[currentTrack].Track;
@@ -73,6 +88,9 @@ public class TrackManager : MonoBehaviour
         spectrum.freq_normalizer = playlist[currentTrack].frequencyModifier;
         spectrum.curve_modifier = playlist[currentTrack].curveMultiplier;
         spectrum.spectrum_divider = playlist[currentTrack].freqDivisions;
+
+        //Adjust BPM on Pulse UI
+        StartCoroutine(adjustBPM(playlist[currentTrack].Bpm));
 
         musicPlayer.Play();
     }
@@ -85,6 +103,30 @@ public class TrackManager : MonoBehaviour
         }
 
         playlist.Sort((x, y) => x.getShuffle().CompareTo(y.getShuffle()));
+    }
+
+    private IEnumerator adjustBPM(int newBpm)
+    {
+        float switchTime = 3.0f, elapsedTime = 0.0f;
+
+        // Wait til start of next pulse to transition
+        float lastCheckedValue = Mathf.FloorToInt(Time.time * 1000) % 250;
+        while (lastCheckedValue <= Mathf.FloorToInt(Time.time * 1000) % 250)
+        {
+            lastCheckedValue = Mathf.FloorToInt(Time.time * 1000) % 250;
+            yield return null;
+        }
+        
+        while (elapsedTime < switchTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float bpm = Mathf.Lerp(currentBpm, newBpm, elapsedTime / switchTime);
+            BpmMaterial.SetFloat("BPM", newBpm);
+            yield return null;
+        }
+        currentBpm = newBpm;
+        BpmMaterial.SetFloat("BPM", newBpm);
+        yield return null;
     }
 
     /*

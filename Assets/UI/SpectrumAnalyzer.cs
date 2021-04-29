@@ -35,13 +35,13 @@ public class SpectrumAnalyzer : MonoBehaviour
                 //We only care about 6 buckets
                 index = Mathf.FloorToInt(i / (spectrum.Length / spectrum_divider));
                 if (index < 6) {
-                    hexVals[index] += spectrum[i];
+                    hexVals[index] += spectrum[i] * freq_normalizer.Evaluate(i / 256.0f);
                 }
             }
 
             for(int side = 0; side < 6; side++)
             {
-                float strength = Mathf.Clamp(hexVals[side] * freq_normalizer.Evaluate(side / 6.0f) * curve_modifier, 0.0f, 1.0f);
+                float strength = Mathf.Clamp(hexVals[side] * curve_modifier, 0.0f, 1.0f);
                 hexVisualizer.setSize(side, strength);
                 hexVals[side] = 0.0f;
             }
