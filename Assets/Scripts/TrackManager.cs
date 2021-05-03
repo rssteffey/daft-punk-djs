@@ -16,7 +16,7 @@ public class TrackManager : MonoBehaviour
 
     public TrackInfo trackInfoDisplay;
 
-    public Material BpmMaterial;
+    public Material LeftMaterial, CenterMaterial, TriMaterial;
 
     private AudioSource musicPlayer;
     private bool currentlyPlaying, stopped;
@@ -107,26 +107,30 @@ public class TrackManager : MonoBehaviour
 
     private IEnumerator adjustBPM(int newBpm)
     {
-        float switchTime = 3.0f, elapsedTime = 0.0f;
-
         // Wait til start of next pulse to transition
-        float lastCheckedValue = Mathf.FloorToInt(Time.time * 1000) % 250;
-        while (lastCheckedValue <= Mathf.FloorToInt(Time.time * 1000) % 250)
+        float newVal = Mathf.FloorToInt(Time.time * 100) % 254;
+        float lastCheckedValue;
+        float bpmMultiplier = (currentBpm / 60) * 254;
+
+        do
         {
-            lastCheckedValue = Mathf.FloorToInt(Time.time * 1000) % 250;
             yield return null;
-        }
-        
-        while (elapsedTime < switchTime)
-        {
-            elapsedTime += Time.deltaTime;
-            float bpm = Mathf.Lerp(currentBpm, newBpm, elapsedTime / switchTime);
-            BpmMaterial.SetFloat("BPM", newBpm);
-            yield return null;
-        }
+            lastCheckedValue = newVal;
+            newVal = Mathf.FloorToInt(Time.time * bpmMultiplier) % 254;
+        } while (lastCheckedValue <= newVal);
+
+
         currentBpm = newBpm;
-        BpmMaterial.SetFloat("BPM", newBpm);
+        setBpmMaterials(newBpm);
         yield return null;
+    }
+
+
+    public void setBpmMaterials(float newBpm)
+    {
+        LeftMaterial.SetFloat("BPM", newBpm);
+        TriMaterial.SetFloat("BPM", newBpm / 4.0f);
+        CenterMaterial.SetFloat("BPM", newBpm);
     }
 
     /*
