@@ -78,7 +78,8 @@ public class TrackManager : MonoBehaviour
         }
 
         //Update track info in UI visualizer
-        trackInfoDisplay.updateTrackInfo(playlist[currentTrack].Name, playlist[currentTrack].Artist);
+        //trackInfoDisplay.updateTrackInfo(playlist[currentTrack].Name, playlist[currentTrack].Artist);
+        FindObjectOfType<SocketListener>().updateTrack(playlist[currentTrack].Name, playlist[currentTrack].Artist, playlist[currentTrack].Bpm);
 
         // Start the track
         Debug.Log("Now playing: " + playlist[currentTrack].Name);
