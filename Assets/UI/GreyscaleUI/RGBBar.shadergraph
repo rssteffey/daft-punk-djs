@@ -4603,7 +4603,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "551d9d1794ea4a8cbd787f45ab38dfea",
     "m_Id": 0,
-    "m_DisplayName": "bpm",
+    "m_DisplayName": "BPM",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
