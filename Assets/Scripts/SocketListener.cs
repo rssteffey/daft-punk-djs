@@ -31,9 +31,10 @@ public class SocketListener : MonoBehaviour
         //socket.On("connect", TestBoop); //TODO error when no service connection can be found
         if (isSecondary) {
             socket.On("sendChoices", this.receiveData);
+
         }
 
-        joinRoom("TRON");
+        StartCoroutine(rejoinLoop());
     }
 
     // Update is called once per frame
@@ -46,6 +47,16 @@ public class SocketListener : MonoBehaviour
         if (Input.GetKeyDown("p"))
         {
             newTrack(125, "DJ", "New Song Title", "Daft Punk");
+        }
+    }
+
+    // For some reason the sockets seem to time out after a certain amount of time?  Idk, rejoin the room every 3 minutes just in case
+    private IEnumerator rejoinLoop()
+    {
+        while (true)
+        {
+            joinRoom(currentRoom);
+            yield return new WaitForSeconds(60);
         }
     }
 

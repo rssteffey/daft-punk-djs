@@ -36,6 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - BPM: 166
     m_Colors:
     - Color_bba1d572af5b4597a5a190f5c6c99f16: {r: 0.4009434, g: 0.9462473, b: 1, a: 0}
   m_BuildTextureStacks: []
