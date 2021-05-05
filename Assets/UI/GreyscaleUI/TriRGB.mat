@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BPM_Pulse_Center
-  m_Shader: {fileID: -6465566751694194690, guid: 9f75e9b086d70ea48870fb76ddba9228, type: 3}
+  m_Name: TriRGB
+  m_Shader: {fileID: -6465566751694194690, guid: ff4396f92016f7648a91902f8637e546, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -19,8 +19,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - GradientTex:
-        m_Texture: {fileID: 2800000, guid: aae43375e139e4c44b29c263946a27ea, type: 3}
+    - Sprite:
+        m_Texture: {fileID: 2800000, guid: 7deb87738c1e99849b1b0ec9eb540dc8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -36,9 +36,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - BPM: 130
-    - Vector1_6f4084ea5692415f8cc28ccb07ce3075: 512
-    - Vector1_dbe254cc0dd3451f927f7872f4589039: 120
-    m_Colors:
-    - Color_bba1d572af5b4597a5a190f5c6c99f16: {r: 0.4009434, g: 0.9462473, b: 1, a: 0}
+    - Vector1_e8d3cc6acdde45ec81e2c1981a88bd3a: 50
+    - b_offset: 150
+    - bpm: 120
+    - g_offset: 90
+    m_Colors: []
   m_BuildTextureStacks: []

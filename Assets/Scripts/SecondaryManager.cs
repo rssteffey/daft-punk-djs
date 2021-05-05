@@ -5,7 +5,7 @@ using UnityEngine;
 public class SecondaryManager : MonoBehaviour
 {
 
-    public Material LeftMaterial;
+    public Material LeftMaterial, triRGB, barRGB;
 
     private float currentBpm = 100;
 
@@ -53,7 +53,7 @@ public class SecondaryManager : MonoBehaviour
     public void setBpmMaterials(float newBpm)
     {
         LeftMaterial.SetFloat("BPM", newBpm);
-        //TriMaterial.SetFloat("BPM", newBpm / 4.0f);
-        //CenterMaterial.SetFloat("BPM", newBpm);
+        triRGB.SetFloat("BPM", newBpm);
+        barRGB.SetFloat("BPM", newBpm);
     }
 }
