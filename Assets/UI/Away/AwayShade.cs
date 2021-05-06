@@ -41,24 +41,16 @@ public class AwayShade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("s"))
-        {
-            if (!isClosed)
-            {
-                shutter(true);
-            } else
-            {
-                shutter(false);
-            }
-        }
+        
     }
 
-    public void shutter(bool shutDown)
+
+    public void shutter()
     {
-        if (shutDown && !isClosed)
+        if (!isClosed)
         {
             StartCoroutine(glitchIn());
-        } else if(!shutDown && isClosed)
+        } else if(isClosed)
         {
             StartCoroutine(glitchOut());
         }

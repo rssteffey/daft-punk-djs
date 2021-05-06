@@ -28,10 +28,9 @@ public class SocketListener : MonoBehaviour
 
     public void initializeSocketListeners()
     {
-        //socket.On("connect", TestBoop); //TODO error when no service connection can be found
         if (isSecondary) {
             socket.On("sendChoices", this.receiveData);
-
+            socket.On("dropPlayer", this.awayMode);
         }
 
         StartCoroutine(rejoinLoop());
@@ -47,6 +46,10 @@ public class SocketListener : MonoBehaviour
         if (Input.GetKeyDown("p"))
         {
             newTrack(125, "DJ", "New Song Title", "Daft Punk");
+        }
+        if (Input.GetKeyDown("s"))
+        {
+            awayMode(new SocketIOEvent("dropPlayer"));
         }
     }
 
@@ -75,6 +78,17 @@ public class SocketListener : MonoBehaviour
         float bpm = float.Parse(e.data.GetField("values").GetField("bpm").ToString().Replace("\"", ""));
 
         FindObjectOfType<SecondaryManager>().receiveTrackInfo(title, artist, bpm);
+    }
+
+    public void awayMode(SocketIOEvent e)
+    {
+        Debug.Log("Going away");
+        Debug.Log(e);
+
+        foreach(AwayShade a in FindObjectsOfType<AwayShade>())
+        {
+            a.shutter();
+        }
     }
 
     //----------------------------------------THINGS TO SEND TO THE SOCKET-----------------------------------------------
