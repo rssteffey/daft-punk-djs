@@ -138,12 +138,13 @@
     <Compile Include="Assets\SocketIO\WebsocketSharp\Net\HttpUtility.cs" />
     <Compile Include="Assets\SocketIO\Scripts\Test\TestSocketIO.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\Ext.cs" />
+    <Compile Include="Assets\UI\GreyscaleUI\TrianglePulser.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\PayloadData.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\Net\Chunk.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\Net\InputChunkState.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\LogLevel.cs" />
     <Compile Include="Assets\Scripts\MaterialTester.cs" />
-    <Compile Include="Assets\UI\GreyscaleUI\TrianglePulser.cs" />
+    <Compile Include="Assets\UI\Away\AwayShade.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

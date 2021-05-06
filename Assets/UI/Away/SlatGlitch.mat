@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TriangleBPM
-  m_Shader: {fileID: -6465566751694194690, guid: 9f75e9b086d70ea48870fb76ddba9228, type: 3}
+  m_Name: SlatGlitch
+  m_Shader: {fileID: -6465566751694194690, guid: 8f3137603117bf74db5879d85147de3a, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,8 +19,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - GradientTex:
-        m_Texture: {fileID: 2800000, guid: 895f03c808b8a464bb72d62e34873b7b, type: 3}
+    - Texture2D_06113316927b438ebe14de9519a9cdb3:
+        m_Texture: {fileID: 2800000, guid: dd70d5046776393489d5ad8b62368bb8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_234df09f46434000bf67f014767fa44c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6894f0fcdbc09914bbcff96dbbed6406, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -36,7 +40,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - BPM: 41.5
+    - Displace: 0.5
+    - GlitchAmount: 1
+    - Opacity: 1
+    - Speed: 40
+    - Vector1_0a8fe2ea043d4175b98cc169c65ac7a2: 0
+    - Vector1_6627d5f43d2f46e5893e5b364608a098: 40
+    - Vector1_8d8df3d8ff53480190219ecd895cae87: 0
     m_Colors:
-    - Color_bba1d572af5b4597a5a190f5c6c99f16: {r: 0.4009434, g: 0.9462473, b: 1, a: 0}
+    - PanelColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

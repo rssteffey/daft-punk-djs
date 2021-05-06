@@ -21,41 +21,41 @@ public class MaterialTester : MonoBehaviour
         //dotMatrix.SetFloat("", newY);
         dotMatrix.SetVector("", new Vector2());
 
-        // Lines Arrow Keys
-        if (Input.GetKeyDown("down"))
-        {
-            changeVector("lines", "y", -0.5f);
-        }
-        if (Input.GetKeyDown("up"))
-        {
-            changeVector("lines", "y", 0.5f);
-        }
-        if (Input.GetKeyDown("right"))
-        {
-            changeVector("lines", "x", 0.5f);
-        }
-        if (Input.GetKeyDown("left"))
-        {
-            changeVector("lines", "x", -0.5f);
-        }
+        //// Lines Arrow Keys
+        //if (Input.GetKeyDown("down"))
+        //{
+        //    changeVector("lines", "y", -0.5f);
+        //}
+        //if (Input.GetKeyDown("up"))
+        //{
+        //    changeVector("lines", "y", 0.5f);
+        //}
+        //if (Input.GetKeyDown("right"))
+        //{
+        //    changeVector("lines", "x", 0.5f);
+        //}
+        //if (Input.GetKeyDown("left"))
+        //{
+        //    changeVector("lines", "x", -0.5f);
+        //}
 
-        // Dots WASD
-        if (Input.GetKeyDown("s"))
-        {
-            changeVector("dots", "y", -0.5f);
-        }
-        if (Input.GetKeyDown("w"))
-        {
-            changeVector("dots", "y", 0.5f);
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            changeVector("dots", "x", 0.5f);
-        }
-        if (Input.GetKeyDown("a"))
-        {
-            changeVector("dots", "x", -0.5f);
-        }
+        //// Dots WASD
+        //if (Input.GetKeyDown("s"))
+        //{
+        //    changeVector("dots", "y", -0.5f);
+        //}
+        //if (Input.GetKeyDown("w"))
+        //{
+        //    changeVector("dots", "y", 0.5f);
+        //}
+        //if (Input.GetKeyDown("d"))
+        //{
+        //    changeVector("dots", "x", 0.5f);
+        //}
+        //if (Input.GetKeyDown("a"))
+        //{
+        //    changeVector("dots", "x", -0.5f);
+        //}
     }
 
     public void changeVector(string vectorName, string axis, float amount)

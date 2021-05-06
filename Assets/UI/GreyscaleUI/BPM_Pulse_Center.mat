@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - BPM: 130
+    - BPM: 166
     - Vector1_6f4084ea5692415f8cc28ccb07ce3075: 512
     - Vector1_dbe254cc0dd3451f927f7872f4589039: 120
     m_Colors:
