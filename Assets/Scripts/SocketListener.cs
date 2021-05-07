@@ -50,6 +50,7 @@ public class SocketListener : MonoBehaviour
         if (Input.GetKeyDown("s"))
         {
             awayMode(new SocketIOEvent("dropPlayer"));
+            shutter();
         }
     }
 
@@ -119,6 +120,15 @@ public class SocketListener : MonoBehaviour
 
         JSONObject js = new JSONObject(jsonData);
         socket.Emit("sendChoices", js);
+    }
+
+    public void shutter()
+    {
+        socketCall call = new socketCall("dropPlayer", "app", currentRoom, null, "CLU");
+        string jsonData = call.getCall();
+
+        JSONObject js = new JSONObject(jsonData);
+        socket.Emit("dropPlayer", js);
     }
 
     public void TestBoop(SocketIOEvent e) { Debug.Log(string.Format("[name: {0}, data: {1}]", e.name, e.data)); }

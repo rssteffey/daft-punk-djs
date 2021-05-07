@@ -7,6 +7,8 @@ public class SecondaryManager : MonoBehaviour
 
     public Material LeftMaterial, triRGB, barRGB;
 
+    public RingSpawner rings;
+
     private float currentBpm = 100;
 
     // Start is called before the first frame update
@@ -55,5 +57,7 @@ public class SecondaryManager : MonoBehaviour
         LeftMaterial.SetFloat("BPM", newBpm);
         triRGB.SetFloat("BPM", newBpm);
         barRGB.SetFloat("BPM", newBpm);
+
+        rings.bpm = newBpm;
     }
 }

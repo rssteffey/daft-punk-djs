@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - B: 31.1
-    - BPM: 112
+    - BPM: 97
     - G: 138.4
     - R: 1
     - SliderSize: 2.7

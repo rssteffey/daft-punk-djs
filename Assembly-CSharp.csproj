@@ -145,6 +145,8 @@
     <Compile Include="Assets\SocketIO\WebsocketSharp\LogLevel.cs" />
     <Compile Include="Assets\Scripts\MaterialTester.cs" />
     <Compile Include="Assets\UI\Away\AwayShade.cs" />
+    <Compile Include="Assets\UI\Starfield\CircleSpawner.cs" />
+    <Compile Include="Assets\UI\Starfield\RingSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
