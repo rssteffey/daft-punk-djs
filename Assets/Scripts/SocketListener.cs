@@ -11,6 +11,7 @@ public class SocketListener : MonoBehaviour
     public string currentRoom;
 
     public bool isSecondary;
+    public TrackManager jukebox;
 
     public string app_url = "http://wordabeasts.herokuapp.com/api/v1/room";
 
@@ -30,8 +31,9 @@ public class SocketListener : MonoBehaviour
     {
         if (isSecondary) {
             socket.On("sendChoices", this.receiveData);
-            socket.On("dropPlayer", this.awayMode);
         }
+
+        socket.On("dropPlayer", this.awayMode);
 
         StartCoroutine(rejoinLoop());
     }
@@ -43,24 +45,26 @@ public class SocketListener : MonoBehaviour
         {
             joinRoom(currentRoom);
         }
-        if (Input.GetKeyDown("p"))
-        {
-            newTrack(125, "DJ", "New Song Title", "Daft Punk");
-        }
+        //if (Input.GetKeyDown("p"))
+        //{
+        //    newTrack(125, "DJ", "New Song Title", "Daft Punk");
+        //}
         if (Input.GetKeyDown("s"))
         {
-            awayMode(new SocketIOEvent("dropPlayer"));
+            //awayMode(new SocketIOEvent("dropPlayer"));
             shutter();
+            joinRoom(currentRoom);
         }
     }
 
     // For some reason the sockets seem to time out after a certain amount of time?  Idk, rejoin the room every 3 minutes just in case
     private IEnumerator rejoinLoop()
     {
+        yield return new WaitForSeconds(2);
         while (true)
         {
             joinRoom(currentRoom);
-            yield return new WaitForSeconds(60);
+            yield return new WaitForSeconds(20);
         }
     }
 
@@ -89,6 +93,11 @@ public class SocketListener : MonoBehaviour
         foreach(AwayShade a in FindObjectsOfType<AwayShade>())
         {
             a.shutter();
+        }
+
+        if (!isSecondary)
+        {
+            jukebox.toggleMute();
         }
     }
 

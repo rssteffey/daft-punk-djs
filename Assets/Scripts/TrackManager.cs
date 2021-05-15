@@ -21,6 +21,7 @@ public class TrackManager : MonoBehaviour
     private AudioSource musicPlayer;
     private bool currentlyPlaying, stopped;
     private int currentBpm = 0;
+    private bool muted;
 
 
     void Start()
@@ -39,6 +40,7 @@ public class TrackManager : MonoBehaviour
 
         shuffle();
         musicPlayer.Play();
+        muted = false;
     }
 
     void Update()
@@ -62,6 +64,49 @@ public class TrackManager : MonoBehaviour
     public TrackInformation GetCurrentTrack()
     {
         return playlist[currentTrack];
+    }
+
+    public void toggleMute()
+    {
+        if (muted)
+        {
+            StartCoroutine(muter(false));
+            muted = false;
+        } else
+        {
+            StartCoroutine(muter(true));
+            muted = true;
+        }
+    }
+
+    private IEnumerator muter(bool down)
+    {
+        yield return null;
+
+        float elapsedTime = 0.0f;
+        float fadeTime = 3.0f;
+
+        float target, start;
+
+        if (down)
+        {
+            target = 0.0f;
+            start = 1.0f;
+        } else
+        {
+            target = 1.0f;
+            start = 0.0f;
+        }
+
+        while(elapsedTime < fadeTime)
+        {
+            musicPlayer.volume = Mathf.Lerp(start, target, elapsedTime / fadeTime);
+            elapsedTime+= Time.deltaTime;
+            yield return null;
+        }
+
+        musicPlayer.volume = target;
+        yield return null;
     }
 
     public void nextTrack()

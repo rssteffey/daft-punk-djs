@@ -3534,8 +3534,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433310511}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 17.9, y: 15.82, z: 48.64}
-  m_LocalScale: {x: 1.0937791, y: 1.0937791, z: 1.0937791}
+  m_LocalPosition: {x: 17.9, y: 13.6, z: 48.061}
+  m_LocalScale: {x: 1.0236241, y: 0.84889144, z: 1.0236241}
   m_Children: []
   m_Father: {fileID: 215119268}
   m_RootOrder: 1
@@ -3601,6 +3601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434717667}
   - component: {fileID: 1434717666}
+  - component: {fileID: 1434717668}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -3634,6 +3635,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1434717668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434717665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c92e4035b7bb4a40ba8616c5a373546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPulse: {fileID: 2100000, guid: 6dec8361cf2fc304ea13c216b48f7bcd, type: 2}
+  gridDots: {fileID: 2100000, guid: 639ac179334ca9142a1ee61dc97b65b8, type: 2}
 --- !u!1 &1520206017
 GameObject:
   m_ObjectHideFlags: 0
@@ -6859,7 +6874,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3560801365661803255, guid: fe282c40382012b4f9cf0b0aa2e0ef54, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3560801365661803255, guid: fe282c40382012b4f9cf0b0aa2e0ef54, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fe282c40382012b4f9cf0b0aa2e0ef54, type: 3}
 --- !u!4 &3664594853931181273
 Transform:
@@ -7783,6 +7803,7 @@ MonoBehaviour:
   socket: {fileID: 5007628958243517975}
   currentRoom: TRON
   isSecondary: 0
+  jukebox: {fileID: 291890892}
   app_url: http://wordabeasts.herokuapp.com/api/v1/room
 --- !u!1 &5025360108849804745
 GameObject:

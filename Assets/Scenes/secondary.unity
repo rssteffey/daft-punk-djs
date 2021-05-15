@@ -847,6 +847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShadesCam
       objectReference: {fileID: 0}
+    - target: {fileID: 3560801365661803242, guid: fe282c40382012b4f9cf0b0aa2e0ef54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3560801365661803254, guid: fe282c40382012b4f9cf0b0aa2e0ef54, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2708,6 +2712,7 @@ MonoBehaviour:
   triRGB: {fileID: 2100000, guid: d86a763523cd3e34392888439242a5f2, type: 2}
   barRGB: {fileID: 2100000, guid: 75b55c93729cfcf4aad5c72b416d947a, type: 2}
   rings: {fileID: 304746993}
+  StarSpawner: {fileID: 1497358213}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,7 +4119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1546070254
 Transform:
   m_ObjectHideFlags: 0

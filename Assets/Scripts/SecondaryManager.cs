@@ -9,6 +9,8 @@ public class SecondaryManager : MonoBehaviour
 
     public RingSpawner rings;
 
+    public GameObject StarSpawner;
+
     private float currentBpm = 100;
 
     // Start is called before the first frame update
@@ -20,7 +22,10 @@ public class SecondaryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("p"))
+        {
+            StarSpawner.SetActive(!StarSpawner.activeSelf);
+        }
     }
 
     public void receiveTrackInfo(string title, string artist, float bpm)
