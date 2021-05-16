@@ -774,7 +774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215119267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7, y: -6.9, z: -125.3}
+  m_LocalPosition: {x: 3.7, y: -5.81, z: -125.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1433310512}
@@ -2173,7 +2173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589190613}
   m_LocalRotation: {x: 0.69840115, y: -0.11061577, z: 0.69840115, w: -0.11061577}
-  m_LocalPosition: {x: -0, y: -10.4, z: 0.5}
+  m_LocalPosition: {x: -0, y: -7.651, z: 0.5}
   m_LocalScale: {x: 1.3727416, y: 1.3727416, z: 1.3727416}
   m_Children: []
   m_Father: {fileID: 1890839179}
@@ -2695,6 +2695,7 @@ MonoBehaviour:
   socket: {fileID: 1286559697}
   currentRoom: TRON
   isSecondary: 1
+  jukebox: {fileID: 0}
   app_url: http://wordabeasts.herokuapp.com/api/v1/room
 --- !u!114 &880167561
 MonoBehaviour:
@@ -2879,7 +2880,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078082377}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -83.82587, y: 1.0056305, z: -184.44638}
+  m_LocalPosition: {x: -83.826, y: 1.0056305, z: -182.501}
   m_LocalScale: {x: 1.085272, y: 1.085272, z: 1.085272}
   m_Children: []
   m_Father: {fileID: 715098079}
@@ -3325,8 +3326,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294150582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.635, z: -0.69}
-  m_LocalScale: {x: 1.16, y: 1.16, z: 1.16}
+  m_LocalPosition: {x: 0.04, y: -1.686, z: -0.088}
+  m_LocalScale: {x: 1.0992624, y: 1.0992624, z: 1.0992624}
   m_Children:
   - {fileID: 407864629}
   - {fileID: 449545107}
@@ -4755,7 +4756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7557110821333818222, guid: a2dda98e209842e4ea1a2f721875ac0e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7557110821333818222, guid: a2dda98e209842e4ea1a2f721875ac0e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4775,11 +4776,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7557110821333818222, guid: a2dda98e209842e4ea1a2f721875ac0e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -13
+      value: -63
       objectReference: {fileID: 0}
     - target: {fileID: 7557110821333818222, guid: a2dda98e209842e4ea1a2f721875ac0e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 13
+      value: 32.4
       objectReference: {fileID: 0}
     - target: {fileID: 7557110821333818222, guid: a2dda98e209842e4ea1a2f721875ac0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
