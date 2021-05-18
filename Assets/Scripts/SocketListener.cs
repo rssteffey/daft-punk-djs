@@ -41,7 +41,7 @@ public class SocketListener : MonoBehaviour
         socket.On("dropPlayer", this.awayMode);
 
         //Trigger track change
-        socket.On("trackChange", this.changeTrack);
+        socket.On("removeColor", this.changeTrack);
 
         StartCoroutine(rejoinLoop());
     }
