@@ -149,6 +149,7 @@
     <Compile Include="Assets\SocketIO\WebsocketSharp\LogLevel.cs" />
     <Compile Include="Assets\Scripts\MaterialTester.cs" />
     <Compile Include="Assets\Animation\ThomasAnimEvents.cs" />
+    <Compile Include="Assets\UI\vocoder.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

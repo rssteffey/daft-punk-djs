@@ -8,6 +8,8 @@ public class ThomasAnimEvents : MonoBehaviour
     public TrackManager jukebox;
     public SocketListener sockets;
 
+    public vocoder alexa_speech;
+
     public enum actions
     {
         nextTrack,
@@ -29,9 +31,9 @@ public class ThomasAnimEvents : MonoBehaviour
         
     }
 
-    public void nextTrack()
+    public void alexaTrigger()
     {
-        jukebox.nextTrack();
+        alexa_speech.speak(4.0f);
     }
 
     public void pushButton()

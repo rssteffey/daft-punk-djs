@@ -18,6 +18,8 @@ public class SocketListener : MonoBehaviour
     public Animator ThomasAnim;
     public ThomasAnimEvents ThomasEvents;
 
+    private float ThomasReactionTime = 1.5f;
+
     // Use this for initialization
     void Start()
     {
@@ -89,7 +91,7 @@ public class SocketListener : MonoBehaviour
     {
         //jukebox.nextTrack();  <-- called by animation controller now
         ThomasEvents.currentAction = ThomasAnimEvents.actions.nextTrack;
-        ThomasAnim.SetTrigger("pushButton");
+        StartCoroutine(alexaThenThomasReact());
     }
 
     public void receiveData(SocketIOEvent e)
@@ -109,12 +111,22 @@ public class SocketListener : MonoBehaviour
         if (!isSecondary)
         {
             ThomasEvents.currentAction = ThomasAnimEvents.actions.shutter;
-            ThomasAnim.SetTrigger("pushButton");
+            StartCoroutine(alexaThenThomasReact());
         } else
         {
             StartCoroutine(waitAndHandleShuttering()); // Hacky hacky hacky hacky
         }
-        
+    }
+
+    private IEnumerator alexaThenThomasReact()
+    {
+        ThomasEvents.alexaTrigger();
+
+        // Thomas needs to pause before noticing the Alexa notification
+        yield return new WaitForSeconds(ThomasReactionTime);
+
+        ThomasAnim.SetTrigger("pushButton");
+        yield return null;
     }
 
     public void handleShuttering()
@@ -132,7 +144,7 @@ public class SocketListener : MonoBehaviour
 
     private IEnumerator waitAndHandleShuttering()
     {
-        yield return new WaitForSeconds(4.83f);
+        yield return new WaitForSeconds(ThomasReactionTime + 4.83f); //4.83 is the length of the animation event before the shutters get closed
 
         foreach (AwayShade a in FindObjectsOfType<AwayShade>())
         {
