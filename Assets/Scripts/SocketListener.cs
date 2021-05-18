@@ -15,6 +15,9 @@ public class SocketListener : MonoBehaviour
 
     public string app_url = "http://wordabeasts.herokuapp.com/api/v1/room";
 
+    public Animator ThomasAnim;
+    public ThomasAnimEvents ThomasEvents;
+
     // Use this for initialization
     void Start()
     {
@@ -34,6 +37,9 @@ public class SocketListener : MonoBehaviour
         }
 
         socket.On("dropPlayer", this.awayMode);
+
+        //Trigger track change
+        socket.On("trackChange", this.changeTrack);
 
         StartCoroutine(rejoinLoop());
     }
@@ -55,6 +61,10 @@ public class SocketListener : MonoBehaviour
             shutter();
             joinRoom(currentRoom);
         }
+        if (Input.GetKeyDown("n"))
+        {
+            changeTrack(new SocketIOEvent("changeTrack"));
+        }
     }
 
     // For some reason the sockets seem to time out after a certain amount of time?  Idk, rejoin the room every 3 minutes just in case
@@ -68,9 +78,18 @@ public class SocketListener : MonoBehaviour
         }
     }
 
+    //The information update that second screen listens for (triggered by first screen)
     public void updateTrack(string title, string artist, int bpm)
     {
         newTrack(bpm, "DJ", title, artist);
+    }
+
+    // The actual (Alexa-triggered) call to switch tracks
+    public void changeTrack(SocketIOEvent e)
+    {
+        //jukebox.nextTrack();  <-- called by animation controller now
+        ThomasEvents.currentAction = ThomasAnimEvents.actions.nextTrack;
+        ThomasAnim.SetTrigger("pushButton");
     }
 
     public void receiveData(SocketIOEvent e)
@@ -87,10 +106,20 @@ public class SocketListener : MonoBehaviour
 
     public void awayMode(SocketIOEvent e)
     {
-        Debug.Log("Going away");
-        Debug.Log(e);
+        if (!isSecondary)
+        {
+            ThomasEvents.currentAction = ThomasAnimEvents.actions.shutter;
+            ThomasAnim.SetTrigger("pushButton");
+        } else
+        {
+            StartCoroutine(waitAndHandleShuttering()); // Hacky hacky hacky hacky
+        }
+        
+    }
 
-        foreach(AwayShade a in FindObjectsOfType<AwayShade>())
+    public void handleShuttering()
+    {
+        foreach (AwayShade a in FindObjectsOfType<AwayShade>())
         {
             a.shutter();
         }
@@ -98,6 +127,16 @@ public class SocketListener : MonoBehaviour
         if (!isSecondary)
         {
             jukebox.toggleMute();
+        }
+    }
+
+    private IEnumerator waitAndHandleShuttering()
+    {
+        yield return new WaitForSeconds(4.83f);
+
+        foreach (AwayShade a in FindObjectsOfType<AwayShade>())
+        {
+            a.shutter();
         }
     }
 

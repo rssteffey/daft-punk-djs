@@ -50,15 +50,15 @@ public class TrackManager : MonoBehaviour
             nextTrack();
         }
 
-        if (Input.GetKeyDown("s"))
-        {
-            shuffle();
-        }
+        //if (Input.GetKeyDown("s"))
+        //{
+        //    shuffle();
+        //}
 
-        if (Input.GetKeyDown("n"))
-        {
-            nextTrack();
-        }
+        //if (Input.GetKeyDown("n"))
+        //{
+        //    nextTrack();
+        //}
     }
 
     public TrackInformation GetCurrentTrack()
@@ -123,7 +123,6 @@ public class TrackManager : MonoBehaviour
         }
 
         //Update track info in UI visualizer
-        //trackInfoDisplay.updateTrackInfo(playlist[currentTrack].Name, playlist[currentTrack].Artist);
         FindObjectOfType<SocketListener>().updateTrack(playlist[currentTrack].Name, playlist[currentTrack].Artist, playlist[currentTrack].Bpm);
 
         // Start the track
